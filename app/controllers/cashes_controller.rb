@@ -3,7 +3,7 @@ class CashesController < ApplicationController
 
   # GET /cashes
   def index
-    @cashes = Cash.all
+    @cashes = Cash.where(user_id: @current_user.id, date_close: nil).last
 
     render json: @cashes
   end
