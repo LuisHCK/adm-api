@@ -16,6 +16,7 @@ class ServicesController < ApplicationController
   # POST /services
   def create
     @service = Service.new(service_params)
+    @service.user_id = @current_user.id
 
     if @service.save
       render json: @service, status: :created, location: @service

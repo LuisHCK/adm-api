@@ -16,6 +16,7 @@ class CashesController < ApplicationController
   # POST /cashes
   def create
     @cash = Cash.new(cash_params)
+    @cash.user_id = @current_user.id
 
     if @cash.save
       render json: @cash, status: :created, location: @cash
