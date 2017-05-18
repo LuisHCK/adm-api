@@ -16,6 +16,7 @@ class InvoicesController < ApplicationController
   # POST /invoices
   def create
     @invoice = Invoice.new(invoice_params)
+    @invoice.user_id = @current_user.id
 
     if @invoice.save
       render json: @invoice, status: :created, location: @invoice
